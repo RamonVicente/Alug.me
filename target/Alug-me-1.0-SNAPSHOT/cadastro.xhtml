@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link rel="stylesheet" href="styles/layout.css" type="text/css"/>
+    </h:head>
+     <h:body>
+        <f:view class="center_content">
+            <div class="container">
+                <h1>Alug-Me</h1>
+                <h2>Cadastro usuario.</h2>
+            </div>
+            
+            <div>
+            <fieldset>
+                <h:form>
+                    <p:outputLabel value="Pesquisar "/>
+                    <p:inputText />
+                    <p:commandButton value="Submit" update="" icon="ui-icon-check"/>
+                </h:form>
+                <p:link outcome="login" value="Login"/>
+                <p:spacer width="20"/>
+                <p:link outcome="cadastro" value="Cadastrar"/>
+            </fieldset>
+            </div>
+            <br/>      
+            <div id="container">
+                <h:form>
+                    <p:outputLabel value="Nome:" for="nome"/>
+                    <p:inputText id="nome" value="#{usuarioManagedBean.usuario.nome}" title="Nome" required="true" requiredMessage="The Nome field is required."/>
+                        <p:spacer width="20"/>
+                        <p:outputLabel value="Sobrenome:" for="sobrenome"/>
+                        <p:inputText id="sobrenome" value="#{usuarioManagedBean.usuario.sobrenome}" title="Sobrenome" required="true" requiredMessage="The Sobrenome field is required."/>
+                    <br/><br/>
+                        <p:outputLabel value="Email:" for="email"/>
+                        <p:inputText id="email" value="#{usuarioManagedBean.usuario.email}" title="Email" required="true" requiredMessage="The Email field is required."/> 
+                        <p:spacer width="20"/>
+                        <p:outputLabel value="Senha:" for="senha"/>
+                        <p:password id="senha" value="#{usuarioManagedBean.usuario.senha}" title="Senha" required="true" requiredMessage="The Senha field is required."/>
+                    <br/><br/>
+                        <p:outputLabel value="CPF:" for="cpf"/>         
+                        <p:inputText id="cpf" value="#{usuarioManagedBean.usuario.cpf}" title="CPF" required="true" requiredMessage="The CPF field is required."/>
+                    <br/><br/>
+                        <p:commandButton value="Cadastrar" action="#{usuarioManagedBean.salvar()}"></p:commandButton>
+                </h:form>
+            </div>   
+        </f:view>
+      </h:body>
+</html>

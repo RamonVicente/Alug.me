@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+                    <h1><h:outputText value="Create/Edit"/></h1>
+                    
+                        <h:outputLabel value="Nome:" for="nome" />
+                        <h:inputText id="nome" value="#{usuarioManagedBean.usuario.nome}" title="Nome" required="true" requiredMessage="The Nome field is required."/>
+                        <h:outputLabel value="Sobreome:" for="sobreome" />
+                        <h:inputText id="sobreome" value="#{usuarioManagedBean.usuario.sobrenome}" title="Sobreome" />
+                        <h:outputLabel value="Cpf:" for="cpf" />
+                        <h:inputText id="cpf" value="#{usuarioManagedBean.usuario.cpf}" title="Cpf" required="true" requiredMessage="The Cpf field is required."/>
+                        <h:outputLabel value="Email:" for="email" />
+                        <h:inputText id="email" value="#{usuarioManagedBean.usuario.email}" title="Email" required="true" requiredMessage="The Email field is required."/>
+                        <h:outputLabel value="Senha:" for="senha" />
+                        <h:inputText id="senha" value="#{usuarioManagedBean.usuario.senha}" title="Senha" required="true" requiredMessage="The Senha field is required."/>
+                        
+                        <h:commandButton value="Cadastrar" action="#{usuarioManagedBean.salvar()}"></h:commandButton>
+
+           <!-- <p:panelGrid columns="2" style="position: absolute; top: 250px; left: 500px;">
+                <f:facet name="header">Cadastro Formulário</f:facet>
+                <h:outputText value=""/>
+                <p:inputText value=""/>
+                <h:outputText value=""/>
+                <p:inputText value=""/>
+            </p:panelGrid>
+           -->
+        </h:form>
+    </h:body>
+</html>
+

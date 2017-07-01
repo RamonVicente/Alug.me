@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>Home Page</title>
+        <link rel="stylesheet" href="styles/layout.css" type="text/css"/>
+    </head>
+    <title>Alug-Me HomePage</title>
+        <div class="wrapper row1">
+            <div id="header" class="clear">
+              <div id="hgroup">
+                <h1><a href="#">AlugMe</a></h1>
+                <h2>Anúncios de imóveis.</h2>
+              </div>
+              <form action="#" method="post">
+                <fieldset>
+                  <legend>Search:</legend>
+                  <h:form>
+                      <p:inputText />
+                      <p:commandButton value="Submit" update="" icon="ui-icon-check"/>
+                  </h:form>
+                </fieldset>
+              </form>
+              <nav>
+                  <p:button> <p:link value="Entrar" outcome="login" ></p:link></p:button>
+                  <p:button><p:link value="Cadastrar" outcome="cadastro" type="button"></p:link></p:button>
+                  <p:button><p:link value="Anunciar" outcome="cadastro_de_imovel" type="button"></p:link></p:button>
+              </nav>
+            </div>
+        </div>
+              
+    <div class="wrapper row2">
+      <div id="container" class="clear">
+        <!-- Slider -->
+        <f:view>
+            <h:form>
+                <h:dataTable value="#{usuarioManagedBean.listarTodos()}" var="usuario" border="1" cellpadding="2" cellspacing="2">
+                    <h:column>
+                        <f:facet name="header">Nome</f:facet>
+                        <h:outputText value="#{usuario.nome}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Sobrenome</f:facet>
+                        <h:outputText value="#{usuario.sobrenome}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Email</f:facet>
+                        <h:outputText value="#{usuario.email}"></h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Tipo Usuário</f:facet>
+                        <h:outputText value="#{usuario.tipoUsuario}"></h:outputText>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
+        </f:view>
+
+
+        <div id="homepage" class="last clear">
+          <section class="one_quarter">
+            <h2 class="title">Categorias de imóveis</h2>
+            <nav>
+              <ul>
+                <li><p:link  value="Lojas">
+                        <f:param name="LOJA" value="10" />
+                    </p:link></li>
+                <li><p:link value="Depositos">
+                        <f:param name="DEPOSITO" value="10" />
+                    </p:link></li>
+                <li><p:link value="Salas">
+                        <f:param name="SALA" value="10" />
+                    </p:link></li>
+                <li><p:link value="Apartamento">
+                        <f:param name="APARTAMENTO" value="10" />
+                    </p:link></li>
+                <li><p:link value="Casas">
+                        <f:param name="CASA" value="10" />
+                    </p:link></li>
+                <li class="last"><p:link value="Casas de praia">
+                        <f:param name="CASA_DE_PRAIA" value="10" />
+                    </p:link></li>
+              </ul>
+            </nav>
+          </section>
+          <section class="two_quarter lastbox">
+            <h2 class="title">About US</h2>
+            <img class="imgl" src="images/demo/130x130.gif" width="130" height="130" alt=""/>
+            <p>Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit.</p>
+            <footer class="more"><a href="#">Read More &raquo;</a></footer>
+          </section>
+        </div>
+        <!-- / content body -->
+      </div>
+    </div>
+</html>
+
+

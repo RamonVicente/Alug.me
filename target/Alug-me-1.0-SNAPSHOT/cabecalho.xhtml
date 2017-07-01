@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>Home Page</title>
+        <link rel="stylesheet" href="styles/layout.css" type="text/css"/>
+    </head>
+    <f:view contentType="text/html">
+    <ui:insert name="cabecalho">
+        <title>Alug-Me HomePage</title>
+        <div class="wrapper row1">
+            <div id="header" class="clear">
+              <div id="hgroup">
+                <h1><a href="#">AlugMe</a></h1>
+                <h2>Anúncios de imóveis.</h2>
+              </div>
+              <form action="#" method="post">
+                <fieldset>
+                  <legend>Search:</legend>
+                  <h:form>
+                      <p:inputText />
+                      <p:commandButton value="Submit" update="" icon="ui-icon-check"/>
+                  </h:form>
+                </fieldset>
+              </form>
+              <nav>
+                  <p:commandButton value="Logar" actionListener="#{botaoBean.login()}"/>
+                  <p:commandButton value="Cadastrar" actionListener="#{beanBotao.cadastrar()}"/>
+              </nav>
+            </div>
+          </div>
+        </f:view>
+    </ui:insert>
