@@ -6,6 +6,10 @@
 package com.mycompany.imovelproject.bean;
 
 import com.mycompany.imovelproject.Imovel;
+import com.mycompany.imovelproject.TipoImovel;
+import com.mycompany.imovelproject.UF;
+import com.mycompany.imovelproject.Usuario;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -22,6 +26,9 @@ import javax.ejb.TransactionAttributeType;
 public class ImovelManagedBean {
     
     private Imovel imovel;
+    private UF[] ufs;
+
+    private TipoImovel[] tipos;
     @EJB
     private ImovelService imovelService;
     
@@ -29,12 +36,23 @@ public class ImovelManagedBean {
     public String salvar() {
         this.imovelService.salvar(this.imovel);
         this.imovel = new Imovel();
-        return "index";
+        return "home";
     }
     
     @PostConstruct
     public void iniciar() {
        imovel = imovelService.criar(); 
+    }
+    
+    public List<Imovel> listarTodos(){
+        
+        return this.imovelService.listarTodos();
+        
+    }
+    
+    public UF[] getUfs(){
+        
+        return UF.values();
     }
 
     public Imovel getImovel() {
@@ -53,6 +71,13 @@ public class ImovelManagedBean {
         this.imovelService = imovelService;
     }
     
+    public TipoImovel[] getTipos() {
+        return TipoImovel.values();
+    }
+
+    public void setTipos(TipoImovel[] tipos) {
+        this.tipos = tipos;
+    }
     
     
 }

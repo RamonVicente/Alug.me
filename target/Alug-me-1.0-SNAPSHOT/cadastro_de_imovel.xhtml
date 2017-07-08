@@ -20,16 +20,26 @@
                     <p:outputLabel value="CEP: " for="cep"/>
                     <p:inputText id="cep" value="#{imovelManagedBean.imovel.cep}" title="cep" required="true" requiredMessage="The CEP field is required."/>
                         <p:spacer width="20"/>
+                    <p:outputLabel for="uf" value="UF:" />
+                    <p:selectOneMenu id="uf" value="#{imovelManagedBean.imovel.uf}" style="width:125px">
+                        <f:selectItem itemLabel="Escolha uma UF" itemValue="" />
+                        <f:selectItems value="#{imovelManagedBean.ufs}" var="uf" itemLabel="#{uf}" itemValue="#{uf}"/>
+                    </p:selectOneMenu>
+                    <p:spacer width="20"/>
+                    
                     <p:outputLabel value="Cidade: " for="cidade"/>
                     <p:inputText id="cidade" value="#{imovelManagedBean.imovel.cidade}" title="cidade" required="true" requiredMessage="The Cidade field is required."/>
                         <p:spacer width="20"/>
                         <br/><br/>
-                    <p:outputLabel value="Estado" for="estado"/>
-                    <p:inputText id="estado" value="#{imovelManagedBean.imovel.uf}" title="estado" required="true" requiredMessage="The Estado field is required."/>
-                        <p:spacer width="20"/>
                     <p:outputLabel value="Bairro" for="bairro"/>
                     <p:inputText id="bairro" value="#{imovelManagedBean.imovel.bairro}" title="bairro" required="true" requiredMessage="The Bairro field is required."/>
                         <p:spacer width="20"/>
+                        
+                    <p:outputLabel value="Tipo de Imovel: " for="tipoImovel"/>
+                    <p:selectOneMenu id="tipoImovel" value="#{imovelManagedBean.imovel.tipoImovel}" style="width:125px">
+                        <f:selectItem itemLabel="Escolha uma UF" itemValue="" />
+                        <f:selectItems value="#{imovelManagedBean.tipos}" var="imvoel" itemLabel="#{imvoel}" itemValue="#{imvoel}"/>
+                    </p:selectOneMenu>
                         <br/><br/>
                     <p:outputLabel value="Logradouro" for="logradouro"/>
                     <p:inputText id="logradouro" value="#{imovelManagedBean.imovel.logradouro}" title="logradouro" required="true" requiredMessage="The Logradouro field is required."/>
@@ -41,15 +51,19 @@
                     <p:inputText id="numero" value="#{imovelManagedBean.imovel.numero}" title="numero" required="true" requiredMessage="The Numero field is required."/>
                         <p:spacer width="20"/>
                         <br/><br/>
-                        <p:inputTextarea rows="5" cols="10" value="#{imovelManagedBean.imovel.descricao}"/>
-                        <br/><br/>
-                        <p:inputTextarea rows="5" cols="10" value="#{imovelManagedBean.imovel.caracteristicas}"/>
-                        <br/><br/>
+                    <p:outputLabel value="Descricao: "/>
+                    <br/>
+                    <p:inputTextarea rows="5" cols="50" value="#{imovelManagedBean.imovel.descricao}"/>
+                    <br/><br/>
+                    <p:outputLabel value="Caracteristicas: "/>
+                    <br/>
+                    <p:inputTextarea rows="5" cols="50" value="#{imovelManagedBean.imovel.caracteristicas}"/>
+                    <br/><br/>
                        
                        
                        <br/><br/>
                        <p:commandButton value="Cadastrar" action="#{imovelManagedBean.salvar()}"  icon="ui-icon-check"></p:commandButton>
-                </h:form>z
+                </h:form>
             </div>   
       </h:body>
 </html>

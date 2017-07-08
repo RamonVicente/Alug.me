@@ -35,8 +35,7 @@ public class UsuarioService {
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void salvar(Usuario usuario) {
         
-        //usuario.setTipoUsuario(TipoUsuario.INTERNAUTA);
-        usuario.setTipoUsuario("COMUM");
+        usuario.setTipoUsuario(TipoUsuario.COMUM);
         entityManager.persist(usuario);
         
     }

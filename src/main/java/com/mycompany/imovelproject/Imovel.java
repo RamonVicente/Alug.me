@@ -12,15 +12,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import org.hibernate.validator.constraints.NotBlank;
+
 
 @Entity
 @Table(name="tb_imovel")
+@NamedQuery(name = "Imovel.listarTodos",
+              query= "SELECT e FROM Imovel e")
 public class Imovel implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,8 +46,9 @@ public class Imovel implements Serializable{
     @Column(name = "capa_imovel")
     private String capa;
 
+
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipoimovel_fk")
+    @Column(name="tipoimovel", nullable = false)
     private TipoImovel tipoImovel;
     
     @ManyToOne
@@ -56,14 +59,15 @@ public class Imovel implements Serializable{
      cascade = CascadeType.ALL)
     private List<Queixa> queixas;
     
-    @ManyToOne
-    @JoinColumn(name = "cidade_imovel_fk")
-    private Cidade cidade;
+    @Column(name="cidade")
+    private String cidade;
     
-  
-    @ManyToOne
-    @JoinColumn(name = "bairro_imovel_fk")
-    private Bairro bairro;
+    @Column(name="bairro")
+    private String bairro;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(name="uf", nullable = false)
+    private UF uf;
     
     @OneToMany (mappedBy = "imovel", targetEntity = Imagem.class, fetch = FetchType.LAZY, 
             cascade = CascadeType.ALL)
@@ -82,20 +86,6 @@ public class Imovel implements Serializable{
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
-    public Bairro getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(Bairro bairro) {
-        this.bairro = bairro;
-    }
-   
-    
-    @ManyToOne
-    @JoinColumn(name = "uf_imovel_fk")
-    private UF uf;
-    
 
     public void setCaracteristicas(String caracteristicas) {
         this.caracteristicas = caracteristicas;
@@ -125,22 +115,6 @@ public class Imovel implements Serializable{
         this.imagens = imagens;
     }
 
-    public Cidade getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(Cidade cidade) {
-        this.cidade = cidade;
-    }
-
-    public UF getUf() {
-        return uf;
-    }
-
-    public void setUf(UF uf) {
-        this.uf = uf;
-    }
-
 
     public boolean getStatus() {
         return status;
@@ -148,7 +122,6 @@ public class Imovel implements Serializable{
     public void setStatus(boolean disponivel) {
         this.status = disponivel;
     }
-
 
      public String getLogradouro() {
         return logradouro;
@@ -172,14 +145,6 @@ public class Imovel implements Serializable{
         this.cep = cep;
     }
 
-    public TipoImovel getTipoImovel() {
-        return tipoImovel;
-    }
-
-    public void setTipoImovel(TipoImovel tipo) {
-        this.tipoImovel = tipo;
-    }
-    
     public String getCapa() {
         return capa;
     }
@@ -215,5 +180,40 @@ public class Imovel implements Serializable{
     public void getTipoImovel(TipoImovel tipoImovel) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public TipoImovel getTipoImovel() {
+        return tipoImovel;
+    }
+
+    public void setTipoImovel(TipoImovel tipoImovel) {
+        this.tipoImovel = tipoImovel;
+    }
+
+    public UF getUf() {
+        return uf;
+    }
+
+    public void setUf(UF uf) {
+        this.uf = uf;
+    }
+
+    
+    
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
     
 }

@@ -38,22 +38,22 @@
         <!-- Slider -->
         <f:view>
             <h:form>
-                <h:dataTable value="#{usuarioManagedBean.listarTodos()}" var="usuario" border="1" cellpadding="2" cellspacing="2">
+                <h:dataTable value="#{imovelManagedBean.listarTodos()}" var="imovel" border="1" cellpadding="2" cellspacing="2">
                     <h:column>
-                        <f:facet name="header">Nome</f:facet>
-                        <h:outputText value="#{usuario.nome}"></h:outputText>
+                        <f:facet name="header">Cidade</f:facet>
+                        <h:outputText value="#{imovel.cidade}"></h:outputText>
                     </h:column>
                     <h:column>
-                        <f:facet name="header">Sobrenome</f:facet>
-                        <h:outputText value="#{usuario.sobrenome}"></h:outputText>
+                        <f:facet name="header">Logradouro</f:facet>
+                        <h:outputText value="#{imovel.bairro}"></h:outputText>
                     </h:column>
                     <h:column>
-                        <f:facet name="header">Email</f:facet>
-                        <h:outputText value="#{usuario.email}"></h:outputText>
+                        <f:facet name="header">Tipo de Imovel</f:facet>
+                        <h:outputText value="#{imovel.tipoImovel}"></h:outputText>
                     </h:column>
                     <h:column>
-                        <f:facet name="header">Tipo Usuário</f:facet>
-                        <h:outputText value="#{usuario.tipoUsuario}"></h:outputText>
+                        <f:facet name="header">UF</f:facet>
+                        <h:outputText value="#{imovel.uf}"></h:outputText>
                     </h:column>
                 </h:dataTable>
             </h:form>

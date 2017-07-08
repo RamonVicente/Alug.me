@@ -6,8 +6,7 @@
 package com.mycompany.imovelproject.bean;
 
 import com.mycompany.imovelproject.Imovel;
-import com.mycompany.imovelproject.TipoImovel;
-import com.mycompany.imovelproject.Usuario;
+import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -17,6 +16,7 @@ import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.persistence.Query;
 
 /**
  *
@@ -39,8 +39,13 @@ public class ImovelService {
     public void salvar(Imovel imovel) {
         
         imovel.setStatus(true);
-        imovel.getTipoImovel(TipoImovel.CASA);
         entityManager.persist(imovel);
+    }
+    
+    public List<Imovel> listarTodos(){
+        
+        Query query = entityManager.createNamedQuery("Imovel.listarTodos");
+        return query.getResultList();
     }
     
 }

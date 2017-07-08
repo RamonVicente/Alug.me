@@ -11,6 +11,6 @@ package com.mycompany.imovelproject;
  */
 public enum TipoUsuario {
     
-    ADMIN, INTERNAUTA;
+    ADMIN, COMUM;
     
 }

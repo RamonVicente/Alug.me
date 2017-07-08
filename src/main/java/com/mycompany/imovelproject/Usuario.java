@@ -50,15 +50,16 @@ public class Usuario implements Serializable{
     @Column(name = "nascimento_usuario", nullable = true)
     private Date dataNascimento;
     
-    @NotNull
-    //@Enumerated(EnumType.STRING)
-    @JoinTable(name = "tipo_usuario")
-    private String tipoUsuario;
-    //private TipoUsuario tipoUsuario;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="tipousuario", nullable = false)
+    private TipoUsuario tipoUsuario;
+
     
     @OneToMany(mappedBy = "usuario", targetEntity = Imovel.class, fetch = FetchType.LAZY,
      cascade = CascadeType.ALL, orphanRemoval = true)
      private List<Imovel> imoveis;
+    
 
      public String getNome() {
              return nome;
@@ -79,13 +80,14 @@ public class Usuario implements Serializable{
         this.id_usuario = id_usuario;
     }
 
-    public String getTipoUsuario() {
+    public TipoUsuario getTipoUsuario() {
         return tipoUsuario;
     }
 
-    public void setTipoUsuario(String tipoUsuario) {
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
+
 
     public List<Imovel> getImoveis() {
         return imoveis;
